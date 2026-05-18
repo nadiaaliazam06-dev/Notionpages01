@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career + Technical Edge</title>
+  <style>
+    :root {
+      --bg: #fff7f3;
+      --card: #ffffff;
+      --ink: #241f21;
+      --muted: #6f6268;
+      --pink: #ff6fae;
+      --rose: #ffd6e7;
+      --yellow: #ffe69a;
+      --blue: #b9dcff;
+      --green: #c8f4d0;
+      --lavender: #ded2ff;
+      --line: #241f21;
+      --shadow: 5px 5px 0 #241f21;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 214, 231, 0.9), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(185, 220, 255, 0.75), transparent 35%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      border: 2px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(135deg, #fff, #fff0f7 48%, #fff8d4);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "✦";
+      position: absolute;
+      right: 28px;
+      top: 18px;
+      font-size: 54px;
+      color: var(--pink);
+      opacity: 0.55;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: var(--yellow);
+      padding: 7px 13px;
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 64px);
+      letter-spacing: -2px;
+      line-height: 0.95;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .north-star {
+      margin-top: 20px;
+      display: inline-block;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: var(--card);
+      padding: 12px 16px;
+      font-weight: 750;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .card {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 3px 3px 0 var(--line);
+      padding: 18px;
+      min-height: 150px;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+
+    .card h2, .panel h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.4px;
+    }
+
+    .card p, .panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .pink { background: var(--rose); }
+    .yellow { background: var(--yellow); }
+    .blue { background: var(--blue); }
+    .green { background: var(--green); }
+    .lavender { background: var(--lavender); }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 3px 3px 0 var(--line);
+      padding: 20px;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    label.check {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1.8px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #ff6fae;
+      margin-top: 1px;
+    }
+
+    .check span {
+      line-height: 1.35;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .check input:checked + span {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .progress-shell {
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      overflow: hidden;
+      height: 24px;
+      margin: 16px 0 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(90deg, var(--pink), var(--yellow));
+      border-right: 2px solid var(--line);
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .mini-table td {
+      background: #fff;
+      border-top: 1.8px solid var(--line);
+      border-bottom: 1.8px solid var(--line);
+      padding: 10px;
+    }
+
+    .mini-table td:first-child {
+      border-left: 1.8px solid var(--line);
+      border-radius: 14px 0 0 14px;
+      font-weight: 750;
+    }
+
+    .mini-table td:last-child {
+      border-right: 1.8px solid var(--line);
+      border-radius: 0 14px 14px 0;
+      color: var(--muted);
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      text-decoration: none;
+      color: var(--ink);
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 9px 12px;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 2px 2px 0 var(--line);
+    }
+
+    .pill:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--line);
+    }
+
+    details {
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px 16px;
+      margin-top: 10px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    details p {
+      margin-top: 10px;
+    }
+
+    .footer-note {
+      margin: 18px 0 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .section-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        padding: 14px;
+      }
+
+      .grid, .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Montréal → McGill → career edge</div>
+      <h1>Career + Technical Edge</h1>
+      <p class="subtitle">
+        A calm command center for becoming strategically technical: finding McGill opportunities, building practical skills, preparing strong applications, and turning communication + research strengths into a high-value information career.
+      </p>
+      <div class="north-star">North Star: technically confident, socially grounded, professionally ready.</div>
+    </section>
+
+    <section class="grid" aria-label="Career dashboard cards">
+      <article class="card">
+        <div class="tag pink">Opportunities</div>
+        <h2>RA / TA + Jobs</h2>
+        <p>Track paid roles, assistantships, campus jobs, internships, and deadlines in one Notion database below this embed.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag blue">People</div>
+        <h2>Faculty + Labs</h2>
+        <p>Map professors, labs, alumni, and students who connect with UX, archives, IA, AI ethics, and information justice.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag yellow">Skills</div>
+        <h2>Technical Roadmap</h2>
+        <p>Prioritize IA, UX research, metadata, SQL, Python basics, accessibility, data literacy, and AI governance.</p>
+      </article>
+
+      <article class="card">
+        <div class="tag green">Proof</div>
+        <h2>Portfolio Projects</h2>
+        <p>Build small proof-of-work projects that show research, organization, ethics, and technical fluency.</p>
+      </article>
+    </section>
+
+    <section class="section-grid">
+      <article class="panel">
+        <div class="tag lavender">This week</div>
+        <h2>Career Actions</h2>
+        <p>Use this as a tiny weekly reset. Your real tasks should live in Notion’s Master Tasks database.</p>
+
+        <div class="focus-list">
+          <label class="check"><input type="checkbox" /><span>Check McGill job portal / department updates.</span></label>
+          <label class="check"><input type="checkbox" /><span>Add one professor, lab, or campus contact to the tracker.</span></label>
+          <label class="check"><input type="checkbox" /><span>Spend two focused hours on one technical skill.</span></label>
+          <label class="check"><input type="checkbox" /><span>Improve CV, LinkedIn, or one portfolio note slightly.</span></label>
+          <label class="check"><input type="checkbox" /><span>Save or apply to one relevant opportunity.</span></label>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="tag pink">Skill focus</div>
+        <h2>Technical Confidence Meter</h2>
+        <p>Not “learn everything.” Just build enough confidence to access better opportunities.</p>
+        <div class="progress-shell" aria-label="Technical confidence progress">
+          <div class="progress-bar"></div>
+        </div>
+        <p><strong>Current focus:</strong> Information Architecture + UX Research + Spreadsheet/Data confidence.</p>
+
+        <table class="mini-table" aria-label="Priority skills">
+          <tr><td>High</td><td>IA, UX Research, Excel/Sheets, Accessibility</td></tr>
+          <tr><td>Medium</td><td>SQL, Python basics, Metadata, Data visualization</td></tr>
+          <tr><td>Strategic</td><td>AI ethics, Knowledge Management, Research Ops</td></tr>
+        </table>
+      </article>
+    </section>
+
+    <section class="section-grid">
+      <article class="panel">
+        <div class="tag blue">Paths</div>
+        <h2>Career Directions to Explore</h2>
+        <table class="mini-table">
+          <tr><td>UX Research</td><td>User research, interviews, synthesis, product insight.</td></tr>
+          <tr><td>Information Architecture</td><td>Organizing complex information so people can actually use it.</td></tr>
+          <tr><td>Knowledge Management</td><td>Systems for documentation, internal learning, and organizational memory.</td></tr>
+          <tr><td>AI / Digital Governance</td><td>Ethics, policy, accountability, rights, and information systems.</td></tr>
+          <tr><td>Accessibility</td><td>Inclusive digital services, audits, research, and design recommendations.</td></tr>
+        </table>
+      </article>
+
+      <article class="panel">
+        <div class="tag yellow">Quick prompts</div>
+        <h2>What should I do next?</h2>
+        <details open>
+          <summary>When I feel overwhelmed</summary>
+          <p>Pick only one: update one opportunity, do one skill lesson, or message one useful person.</p>
+        </details>
+        <details>
+          <summary>When I have energy</summary>
+          <p>Work on a small portfolio project and document the process like a case study.</p>
+        </details>
+        <details>
+          <summary>When I need money clarity</summary>
+          <p>Prioritize on-campus roles that build Canadian experience: library, research, communications, accessibility, admin, and student services.</p>
+        </details>
+      </article>
+    </section>
+
+    <section class="panel" style="margin-top: 18px;">
+      <div class="tag green">Notion setup</div>
+      <h2>Embed this at the top. Keep real data underneath.</h2>
+      <p>
+        Under this visual dashboard, add linked Notion database views for: Active Opportunities, People + Labs, Currently Learning, Portfolio in Progress, and This Week Career Tasks.
+      </p>
+      <div class="quick-links">
+        <a class="pill" href="#">+ New opportunity</a>
+        <a class="pill" href="#">+ New person/lab</a>
+        <a class="pill" href="#">+ New skill</a>
+        <a class="pill" href="#">+ New portfolio idea</a>
+      </div>
+    </section>
+
+    <p class="footer-note">Strategically technical, not randomly technical. Small systems. Strong outcomes.</p>
+  </main>
+</body>
+</html>
